@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'page1_KRS.dart'; // Import Page1
-import 'page2_KRS.dart'; // Import Page2
+import 'page1_KRM.dart'; // Import Page1
+import 'page2_KRM.dart'; // Import Page2
+import 'signup_KRM.dart';
 
 class HomePage_KRS extends StatelessWidget {
   @override
@@ -37,6 +38,23 @@ class HomePage_KRS extends StatelessWidget {
               },
               child: Text("Go to Page 2"),
             ),
+
+
+            SizedBox(height: 10), // Add some spacing
+            ElevatedButton(
+              onPressed: () {
+                // Navigate to Page 2
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SignUpPage()),
+                );
+              },
+              child: Text("Go to Sign Up Page"),
+            ),
+
+
+
+
           ],
         ),
       ),
