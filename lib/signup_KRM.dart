@@ -10,10 +10,12 @@ class SignUpPage extends StatefulWidget {
 class _SignUpPageState extends State<SignUpPage> {
   // Controllers for text fields
 
-  final TextEditingController _lastNameController = TextEditingController();
-  final TextEditingController _firstNameController = TextEditingController();
-  final TextEditingController _usernameController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _firstNameController        = TextEditingController();
+  final TextEditingController _lastNameController         = TextEditingController();
+  final TextEditingController _emailController            = TextEditingController();
+  final TextEditingController _usernameController            = TextEditingController();
+  final TextEditingController _passwordController         = TextEditingController();
+  final TextEditingController _confirmPasswordController  = TextEditingController();
 
   Future<void> _createUser() async {
     
@@ -21,10 +23,13 @@ class _SignUpPageState extends State<SignUpPage> {
     final url = Uri.parse("https://reqres.in/api/users");
 
     final Map<String, dynamic> requestData = {
-      "last_name": _lastNameController.text,
-      "first_name": _firstNameController.text,
-      "username": _usernameController.text,
-      "password": _passwordController.text,
+      "first_name"        : _firstNameController.text,
+      "last_name"         : _lastNameController.text,
+      "email"             : _emailController.text,
+      "username"             : _usernameController.text,
+      "password"          : _passwordController.text,
+      "confirm_password"  : _confirmPasswordController.text,
+
     };
 
     try {
@@ -63,6 +68,12 @@ class _SignUpPageState extends State<SignUpPage> {
               ),
             ),
             TextField(
+              controller: _emailController,
+              decoration: InputDecoration(
+                labelText: 'Email',
+              ),
+            ),
+            TextField(
               controller: _usernameController,
               decoration: InputDecoration(
                 labelText: 'Username',
@@ -72,6 +83,13 @@ class _SignUpPageState extends State<SignUpPage> {
               controller: _passwordController,
               decoration: InputDecoration(
                 labelText: 'Password',
+              ),
+              obscureText: true, // Hide the password input
+            ),
+            TextField(
+              controller: _confirmPasswordController,
+              decoration: InputDecoration(
+                labelText: 'Confirm Password',
               ),
               obscureText: true, // Hide the password input
             ),
